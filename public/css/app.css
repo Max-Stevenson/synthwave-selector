@@ -1,11 +1,27 @@
-svg {
-  width: 100%;
+* body {
+  background: #240932;
 }
 
+canvas {
+  display: block;
+  width: 100%;
+  height: 50vh;
+}
+
+
+.line-drawing-demo {
+  text-align: center;
+}
+
+svg g {
+  transform: translate(-30px);
+}
+
+/* 
 $orange: #FF9952;
 $sunsetOrange: #FF7684;
 $pink: #FF6BCA;
 $bloodRed: #FC3D7A;
 $deepRed: #BC2854;
 $darkRed: #7B0632;
-$deepPurple: #1D1153;
+$deepPurple: #1D1153; */

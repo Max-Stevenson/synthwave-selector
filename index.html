@@ -6,23 +6,26 @@
 
     <title>Synthwave Selector</title>
     <meta name="description" content="The HTML5 Herald" />
-    <meta name="author" content="SitePoint" />
-
+    <meta name="" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, 
+    user-scalable=0"
+    />
     <link rel="stylesheet" href="./public/css/app.css" />
   </head>
 
   <body>
-    <div class="background__wrapper">
-      <canvas id="myCanvas">
-
-      </canvas>
-    </div>
-    <div class="foreground__wrapper"></div>
     <div class="line-drawing-demo" id="test">
-      <svg width="800" height="100" viewBox="0 0 606 50">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        width="100%"
+        height="100"
+        viewBox="0 0 606 50"
+      >
         <defs>
           <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color:#FF9952;stop-opacity:1">
+            <stop offset="0%" style="stop-color: #ff9952; stop-opacity: 1">
               <animate
                 attributeName="stop-color"
                 values="black;#FF9952;black;#FF9952;black;#FF9952"
@@ -30,7 +33,7 @@
                 repeatCount="indefinite"
               />
             </stop>
-            <stop offset="0%" style="stop-color:#FF7684;stop-opacity:1">
+            <stop offset="0%" style="stop-color: #ff7684; stop-opacity: 1">
               <animate
                 attributeName="stop-color"
                 values="black;#FF7684;black;#FF7684;black;#FF7684"
@@ -38,7 +41,7 @@
                 repeatCount="indefinite"
               />
             </stop>
-            <stop offset="0%" style="stop-color:#FF6BCA;stop-opacity:1">
+            <stop offset="0%" style="stop-color: #ff6bca; stop-opacity: 1">
               <animate
                 attributeName="stop-color"
                 values="black;#FF6BCA;black;#FF6BCA;black;#FF6BCA"
@@ -46,7 +49,7 @@
                 repeatCount="indefinite"
               />
             </stop>
-            <stop offset="100%" style="stop-color:#FC3D7A;stop-opacity:1">
+            <stop offset="100%" style="stop-color: #fc3d7a; stop-opacity: 1">
               <animate
                 attributeName="stop-color"
                 values="black;#FC3D7A;black;#FC3D7A;black;#FC3D7A"
@@ -54,7 +57,7 @@
                 repeatCount="indefinite"
               />
             </stop>
-            <stop offset="0%" style="stop-color:#BC2854;stop-opacity:1">
+            <stop offset="0%" style="stop-color: #bc2854; stop-opacity: 1">
               <animate
                 attributeName="stop-color"
                 values="black;#BC2854;black;#BC2854;black;#BC2854"
@@ -62,7 +65,7 @@
                 repeatCount="indefinite"
               />
             </stop>
-            <stop offset="0%" style="stop-color:#7B0632;stop-opacity:1">
+            <stop offset="0%" style="stop-color: #7b0632; stop-opacity: 1">
               <animate
                 attributeName="stop-color"
                 values="black;#7B0632;black;#7B0632;black;#7B0632"
@@ -78,6 +81,61 @@
           />
         </g>
       </svg>
+    </div>
+    <div class="scene">
+      <div class="cube">
+        <div class="cube__face cube__face--back"></div>
+        <div class="cube__face cube__face--bottom">
+          <div class="vertical">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <div class="horizontal">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="horizontal-mobile">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"

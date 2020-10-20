@@ -16,75 +16,102 @@
   </head>
 
   <body>
-    <div class="line-drawing-demo" id="test">
-      <svg
-        preserveAspectRatio="xMidYMid meet"
-        width="100%"
-        height="100"
-        viewBox="0 0 606 50"
-      >
-        <defs>
-          <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" style="stop-color: #ff9952; stop-opacity: 1">
-              <animate
-                attributeName="stop-color"
-                values="black;#FF9952;black;#FF9952;black;#FF9952"
-                dur="7s"
-                repeatCount="indefinite"
-              />
-            </stop>
-            <stop offset="0%" style="stop-color: #ff7684; stop-opacity: 1">
-              <animate
-                attributeName="stop-color"
-                values="black;#FF7684;black;#FF7684;black;#FF7684"
-                dur="7s"
-                repeatCount="indefinite"
-              />
-            </stop>
-            <stop offset="0%" style="stop-color: #ff6bca; stop-opacity: 1">
-              <animate
-                attributeName="stop-color"
-                values="black;#FF6BCA;black;#FF6BCA;black;#FF6BCA"
-                dur="7s"
-                repeatCount="indefinite"
-              />
-            </stop>
-            <stop offset="100%" style="stop-color: #fc3d7a; stop-opacity: 1">
-              <animate
-                attributeName="stop-color"
-                values="black;#FC3D7A;black;#FC3D7A;black;#FC3D7A"
-                dur="7s"
-                repeatCount="indefinite"
-              />
-            </stop>
-            <stop offset="0%" style="stop-color: #bc2854; stop-opacity: 1">
-              <animate
-                attributeName="stop-color"
-                values="black;#BC2854;black;#BC2854;black;#BC2854"
-                dur="7s"
-                repeatCount="indefinite"
-              />
-            </stop>
-            <stop offset="0%" style="stop-color: #7b0632; stop-opacity: 1">
-              <animate
-                attributeName="stop-color"
-                values="black;#7B0632;black;#7B0632;black;#7B0632"
-                dur="7s"
-                repeatCount="indefinite"
-              />
-            </stop>
-          </linearGradient>
-        </defs>
-        <g class="lines" stroke="white" fill="url(#grad1)" stroke-width="1">
-          <path
-            d="M48 0L124 0L116 12L40 12C40 8 40 4 48 0M40 20C40 24 40 28 48 32M40 20L100 20Q124 32 104 52L32 52L40 40L72 40Q76 36 72 32L48 32M124 0L128 12L176 12L192 0L160 0L152 8L148 0L124 0M132 20L168 20L160 32L156 52L136 52L140 32L132 20M192 0L188 12L252 12L256 0L228 0L224 8L212 0L192 0M184 20L248 20L236 52L208 52L216 36L208 28L196 52L172 52L184 20M256 12L264 0L332 0L328 12L256 12M284 20L304 20L292 52L272 52L284 20M336 0L332 12L356 12L360 0L336 0M376 0L400 0L396 12L372 12L376 0M328 20L392 20L380 52L360 52L368 32L348 32L340 52L316 52L328 20M404 0L425 0L421 12L400 12L404 0M434 12L438 0L456 0L452 12L434 12M452 12L464 0L487 0L491 12L452 12M385 52L397 20L418 20L414 31L423 26L427 31M427 31L432 20L493 20L505 52L481 52L474 34L447 34L438 52L416 52L408 40M408 40L403 52L385 52M492 0L496 12L515 12L510 0L492 0M498 20L510 52L528 52L553 20L534 20L522 33L517 20L498 20M537 12L559 12L569 0L547 0L537 12M571 0L561 12L625 12L634 0L571 0M558 20L537 52L597 52L607 39L569 39L573 32L611 32L621 20L558 20"
-          />
-        </g>
-      </svg>
-    </div>
     <div class="scene">
       <div class="cube">
-        <div class="cube__face cube__face--back"></div>
+        <div class="cube__face cube__face--back">
+          <div class="line-drawing-demo rotation-fix" id="test">
+            <svg
+              preserveAspectRatio="xMidYMid meet"
+              width="100%"
+              height="100"
+              viewBox="0 0 606 50"
+            >
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop
+                    offset="0%"
+                    style="stop-color: #ff9952; stop-opacity: 1"
+                  >
+                    <animate
+                      attributeName="stop-color"
+                      values="black;#FF9952;black;#FF9952;black;#FF9952"
+                      dur="7s"
+                      repeatCount="indefinite"
+                    />
+                  </stop>
+                  <stop
+                    offset="0%"
+                    style="stop-color: #ff7684; stop-opacity: 1"
+                  >
+                    <animate
+                      attributeName="stop-color"
+                      values="black;#FF7684;black;#FF7684;black;#FF7684"
+                      dur="7s"
+                      repeatCount="indefinite"
+                    />
+                  </stop>
+                  <stop
+                    offset="0%"
+                    style="stop-color: #ff6bca; stop-opacity: 1"
+                  >
+                    <animate
+                      attributeName="stop-color"
+                      values="black;#FF6BCA;black;#FF6BCA;black;#FF6BCA"
+                      dur="7s"
+                      repeatCount="indefinite"
+                    />
+                  </stop>
+                  <stop
+                    offset="100%"
+                    style="stop-color: #fc3d7a; stop-opacity: 1"
+                  >
+                    <animate
+                      attributeName="stop-color"
+                      values="black;#FC3D7A;black;#FC3D7A;black;#FC3D7A"
+                      dur="7s"
+                      repeatCount="indefinite"
+                    />
+                  </stop>
+                  <stop
+                    offset="0%"
+                    style="stop-color: #bc2854; stop-opacity: 1"
+                  >
+                    <animate
+                      attributeName="stop-color"
+                      values="black;#BC2854;black;#BC2854;black;#BC2854"
+                      dur="7s"
+                      repeatCount="indefinite"
+                    />
+                  </stop>
+                  <stop
+                    offset="0%"
+                    style="stop-color: #7b0632; stop-opacity: 1"
+                  >
+                    <animate
+                      attributeName="stop-color"
+                      values="black;#7B0632;black;#7B0632;black;#7B0632"
+                      dur="7s"
+                      repeatCount="indefinite"
+                    />
+                  </stop>
+                </linearGradient>
+              </defs>
+              <g
+                class="lines"
+                stroke="white"
+                fill="url(#grad1)"
+                stroke-width="1"
+              >
+                <path
+                  d="M48 0L124 0L116 12L40 12C40 8 40 4 48 0M40 20C40 24 40 28 48 32M40 20L100 20Q124 32 104 52L32 52L40 40L72 40Q76 36 72 32L48 32M124 0L128 12L176 12L192 0L160 0L152 8L148 0L124 0M132 20L168 20L160 32L156 52L136 52L140 32L132 20M192 0L188 12L252 12L256 0L228 0L224 8L212 0L192 0M184 20L248 20L236 52L208 52L216 36L208 28L196 52L172 52L184 20M256 12L264 0L332 0L328 12L256 12M284 20L304 20L292 52L272 52L284 20M336 0L332 12L356 12L360 0L336 0M376 0L400 0L396 12L372 12L376 0M328 20L392 20L380 52L360 52L368 32L348 32L340 52L316 52L328 20M404 0L425 0L421 12L400 12L404 0M434 12L438 0L456 0L452 12L434 12M452 12L464 0L487 0L491 12L452 12M385 52L397 20L418 20L414 31L423 26L427 31M427 31L432 20L493 20L505 52L481 52L474 34L447 34L438 52L416 52L408 40M408 40L403 52L385 52M492 0L496 12L515 12L510 0L492 0M498 20L510 52L528 52L553 20L534 20L522 33L517 20L498 20M537 12L559 12L569 0L547 0L537 12M571 0L561 12L625 12L634 0L571 0M558 20L537 52L597 52L607 39L569 39L573 32L611 32L621 20L558 20"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="main__container rotation-fix">
+            <h2>Loading...</h2>
+          </div>
+        </div>
         <div class="cube__face cube__face--bottom">
           <div class="vertical">
             <div class="line"></div>

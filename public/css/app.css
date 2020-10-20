@@ -1,7 +1,6 @@
 * body {
   background: #240932;
   overflow-x: hidden;
-  overflow-y: hidden;
   margin: 0px;
 }
 
@@ -9,11 +8,24 @@
   --grid-size: 5px;
 }
 
+.main__container {
+  display: flex;
+  position: relative;
+  top: 50%;
+  justify-content: center;
+  width: 75%;
+  margin: 0 auto;
+}
+
 .line-drawing-demo {
   position: relative;
   text-align: center;
   z-index: 2;
   top: 15%;
+}
+
+.rotation-fix {
+  transform: rotateY(180deg);
 }
 
 svg g {
@@ -29,7 +41,6 @@ body {
   width: 100%;
   height: 100%;
   background: #09111e;
-  background: linear-gradient(top, #253b5e, #09111e);
   box-shadow: inset 0px 0px 150px rgba(0, 0, 0, 0.65);
 }
 

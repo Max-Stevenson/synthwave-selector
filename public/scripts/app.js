@@ -29,4 +29,19 @@ const progressLoadingBar = () => {
   }
 };
 
-window.onload = progressLoadingBar();
+const loadingAnimation = () => {
+  progressLoadingBar();
+}
+
+
+window.onload = function (e) {
+  var width = 0;
+
+  setInterval(function () {
+
+    width = width >= 100 ? 0 : width + 5;
+    document.getElementById('loading-bar__bar').style.width = width + '%';
+
+
+  }, 10)
+};

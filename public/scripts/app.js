@@ -12,15 +12,16 @@ anime({
 
 const progressLoadingBar = () => {
   let progressBar = document.getElementById("loading-bar__bar");
+  let progressContainer = document.querySelector(".loading-display__container");
   let progress = parseInt(progressBar.getAttribute("progress"));
   let id = setInterval(frame, 50);
 
   function frame() {
     if (progress >= 100) {
       clearInterval(id);
-      progressBar.style.display = "none";
+      progressContainer.style.display = "none";
     } else {
-      progress++;
+      progress += 2;
       progressBar.style.width = progress + "%";
       progressBar.setAttribute("progress", progress);
     }

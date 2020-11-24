@@ -26,6 +26,13 @@
   align-items: center;
 }
 
+.loading-display__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 #loading-bar__container {
   width: 95%;
   background-color: grey;

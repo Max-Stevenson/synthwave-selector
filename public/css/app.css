@@ -8,6 +8,10 @@
   --grid-size: 5px;
 }
 
+.hidden {
+  display: none;
+}
+
 .main__container {
   display: flex;
   flex-direction: column;

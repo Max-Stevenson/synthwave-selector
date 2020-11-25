@@ -10,6 +10,10 @@ anime({
   loop: true
 });
 
+const displayFirstChoice = () => {
+  
+}
+
 const progressLoadingBar = () => {
   let progressBar = document.getElementById("loading-bar__bar");
   let progressContainer = document.querySelector(".loading-display__container");

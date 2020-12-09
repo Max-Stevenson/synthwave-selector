@@ -57,12 +57,12 @@ const DecisionTree = function (data) {
   /* Get full choice data by specific id */
   this.getChoice = function (id) {
 
-    if (!(id in this.choices)) { 
-      return false; 
+    if (!(id in this.choices)) {
+      return false;
     }
     if (!('id' in this.choices[id])) {
       this.choices[id].id = id;
-    } 
+    }
     return this.choices[id];
   };
 
@@ -145,7 +145,6 @@ const DecisionTree = function (data) {
 
     }
 
-    console.log('init', this.initial, this.choices);
 
   };
 
@@ -153,45 +152,35 @@ const DecisionTree = function (data) {
 
 };
 
-
 /*** TEST DATA ***/
-
 var data = {
-  initial: ['stay-in', 'go-out'],
+  initial: ["Sure, why not?", "Let's just let the keyboard do the talking"],
   choices: {
 
     // TOP LEVEL
-
-    'stay-in': {
-      name: 'Stay In',
-      children: ['watch-movie', 'watch-tv', 'cook']
+    "Sure, why not?": {
+      name: "Sure, why not?",
+      children: ["New", "Old"]
+    },
+    "Let's just let the keyboard do the talking": {
+      name: "Let's just let the keyboard do the talking",
+      children: ["Feeling a little despondent?"]
     },
 
-    'go-out': {
-      name: 'Go Out',
-      children: ['cinema', 'drink', 'restaurant']
+    // Sure why not?
+    "New": {
+      name: "New",
+      children: []
     },
-
-    // STAY IN
-
-    'watch-movie': {
-      name: 'Watch a movie',
-      children: ['romantic', 'scary', 'action', 'comedy']
-    },
-    'watch-tv': {
-      name: 'Watch a TV show',
-      children: ['drama', 'sport', 'comedy-tv']
-    },
-    'cook': {
-      name: 'Cook a meal',
-      children: ['spicy', 'traditional']
+    "Old": {
+      name: "Old",
+      children: []
     },
 
     // GO OUT
-
-    'cinema': {
-      name: 'Go to the cinema',
-      children: ['romantic-cine', 'scary-cine']
+    "Feeling a little despondent?": {
+      name: "Feeling a little despondent?",
+      children: ["Not at all", "I'm always in a mood"]
     },
     'drink': {
       name: 'Have a drink',

@@ -10,19 +10,6 @@ anime({
   loop: true
 });
 
-const selectFirstChoice = () => {
-  document.getElementById("q1l").addEventListener("click", () => {
-    document.getElementById("q1").classList.toggle("hidden");
-    document.getElementById("q2").classList.toggle("hidden");
-    document.getElementById("q1l").classList.toggle("hidden");
-    document.getElementById("q1r").classList.toggle("hidden");
-    document.getElementById("q2l").classList.toggle("hidden");
-    document.getElementById("q2r").classList.toggle("hidden");
-  });
-}
-
-selectFirstChoice();
-
 const progressLoadingBar = () => {
   let progressBar = document.getElementById("loading-bar__bar");
   let progressContainer = document.querySelector(".loading-display__container");

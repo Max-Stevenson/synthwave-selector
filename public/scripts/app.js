@@ -167,32 +167,21 @@ var data = {
       children: ["Feeling a little despondent?"]
     },
 
+    // Level One
     // Sure why not?
     "New": {
-      name: "New",
-      children: []
+      name: "New"
     },
     "Old": {
-      name: "Old",
-      children: []
+      name: "Old"
     },
-
     // GO OUT
     "Feeling a little despondent?": {
       name: "Feeling a little despondent?",
       children: ["Not at all", "I'm always in a mood"]
     },
-    'drink': {
-      name: 'Have a drink',
-      children: ['beer', 'whiskey']
-    },
-    'restaurant': {
-      name: 'Visit a restaurant',
-      children: ['italian', 'bbq']
-    },
 
-    // WATCH MOVIE
-
+    // Level Two
     'romantic': {
       name: 'Holding hands'
     },
@@ -254,7 +243,6 @@ var data = {
 };
 
 /** TEST CODE **/
-
 $(function () {
 
   var tree = new DecisionTree(data);

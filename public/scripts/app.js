@@ -319,3 +319,33 @@ $(function () {
 
 });
 
+const treeData = {
+  message: "Do you want vocals with your synthwave?",
+  yes: {
+    answer: "Sure, why not?",
+    message: "New or classic?",
+    yes: {
+      answer: "I'll stick with the classics",
+      result: "Vaporwave"
+    },
+    no: {
+      answer: "Show me something new",
+      result: "Vocal synth"
+    },
+  },
+  no: {
+    answer: "Let's just let the keyboard do the talking",
+    message: "Feeling despondent?",
+    yes: {
+      answer: "I've been known to brood...",
+      message: "Dark or Cyber?",
+      yes: { result: "Darksynth" },
+      no: { result: "Cyberpunk" },
+    },
+    no: {
+      message: "To the stars?",
+      yes: { result: "Spacewave" },
+      no: { message: "Driving fast?", yes: { result: "Outrun" }, no: { result: "Dreamwave" } }
+    },
+  },
+};

@@ -35,29 +35,47 @@ class Tree {
     this.nodes = [];
     this.currentNode = 0;
 
-    // const add = ({ message, yes, no }) => {
-    //   const currentIndex = this.nodes.length;
-    //   this.nodes.push({ message });
-    //   if (yes) {
-    //     this.nodes[currentIndex].yesIndex = add(yes);
-    //   }
-    //   if (no) {
-    //     this.nodes[currentIndex].noIndex = add(no);
-    //   }
-    //   return currentIndex;
-    // };
-
-    const add = ({ message, yes, no, answer }) => {
+    const add = ({ message, yes, no, answer, result }) => {
+      const currentIndex = this.nodes.length;
       if (message) {
-        this.nodes.push({ message })
+        this.nodes.push({ message });
       }
       if (yes) {
-        add(yes);
+        if (answer) {
+          this.nodes[currentIndex].answer = answer;
+        }
+        if (result) {
+          this.nodes[currentIndex].result = result;
+        }
+        this.nodes[currentIndex].yesIndex = add(yes);
       }
       if (no) {
-        add(no)
+        if (answer) {
+          this.nodes[currentIndex].answer = answer;
+        }
+        this.nodes[currentIndex].noIndex = add(no);
       }
-    }
+      return currentIndex;
+    };
+
+    // const add = ({ message, yes, no, answer }) => {
+    //   let currentIndex = this.nodes.length;
+    //   if (message) {
+    //     this.nodes.push({ message })
+    //   }
+
+    //   if (yes) {
+    //     add(yes);
+    //   }
+
+    //   if (answer) {
+    //     this.nodes.push(answer)
+    //   }
+
+    //   if (no) {
+    //     add(no)
+    //   }
+    // }
 
     add(treeObj);
   }
@@ -107,14 +125,34 @@ const treeData = {
     yes: {
       answer: "I've been known to brood...",
       message: "Dark or Cyber?",
-      yes: { answer: "Let's go dark", result: "Darksynth" },
-      no: { answer: "Give me something to go with the bleak future", result: "Cyberpunk" },
+      yes: {
+        answer: "Let's go dark",
+        result: "Darksynth"
+      },
+      no: {
+        answer: "Give me something to go with the bleak future",
+        result: "Cyberpunk"
+      },
     },
     no: {
       answer: "I'm a ray of sunshine",
       message: "To the stars?",
-      yes: { answer: "Get me off this rock", result: "Spacewave" },
-      no: { answer: "I'd prefer to stay local", message: "Driving fast?", yes: { answer: "I'm fast af boi", result: "Outrun" }, no: { answer: "I prefer to take my time", result: "Dreamwave" } }
+      yes: {
+        answer: "Get me off this rock",
+        result: "Spacewave"
+      },
+      no: {
+        answer: "I'd prefer to stay local",
+        message: "Driving fast?",
+        yes: {
+          answer: "I'm fast af boi",
+          result: "Outrun"
+        },
+        no: {
+          answer: "I prefer to take my time",
+          result: "Dreamwave"
+        }
+      }
     },
   },
 };
@@ -125,9 +163,11 @@ const tree = new Tree(treeData);
 document.getElementById("question-header").innerHTML = tree.nodes[tree.getCurrentNode()].message;
 
 // assign yes answer to yes button
-document.getElementById("yes-selection").innerHTML = 
-console.log(tree.nodes);
+document.getElementById("yes-selection").innerHTML =
+  console.log(tree.nodes);
 // assign no answer to no button
 
-
+console.log(tree.walk(false));
+console.log(tree.walk(true));
+console.log(tree.walk(false));
 

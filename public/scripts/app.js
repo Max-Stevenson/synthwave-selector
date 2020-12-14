@@ -327,10 +327,10 @@ const isLeafNode = (node) => {
 
 
 
-const basicClickHandler = () => {
+const basicClickHandler = (object) => {
   document.getElementById("left-selection").addEventListener("click", () => {
-
+    console.log(Object.keys(t).find(key => object[key] === EventTarget.leftValue));
   });
 }
 
-basicClickHandler();
+console.log(Object.keys(t));

@@ -35,17 +35,16 @@ class Tree {
     this.nodes = [];
     this.currentNode = 0;
 
-    const add = ({ message, yes, no, answer, result }) => {
+    const add = ({ question: question, yes, no, answer, result }) => {
       const currentIndex = this.nodes.length;
-      if (message) {
-        this.nodes.push({ message });
+      if (question) {
+        this.nodes.push({ question: question });
+      } else if (result) {
+        this.nodes.push({ result });
       }
       if (yes) {
         if (answer) {
           this.nodes[currentIndex].answer = answer;
-        }
-        if (result) {
-          this.nodes[currentIndex].result = result;
         }
         this.nodes[currentIndex].yesIndex = add(yes);
       }
@@ -58,10 +57,10 @@ class Tree {
       return currentIndex;
     };
 
-    // const add = ({ message, yes, no, answer }) => {
+    // const add = ({ question, yes, no, answer }) => {
     //   let currentIndex = this.nodes.length;
-    //   if (message) {
-    //     this.nodes.push({ message })
+    //   if (question) {
+    //     this.nodes.push({ question })
     //   }
 
     //   if (yes) {
@@ -88,8 +87,8 @@ class Tree {
     return this.currentNode;
   }
 
-  getCurrentNodeMessage() {
-    return this.nodes[this.currentNode].message;
+  getCurrentNodequestion() {
+    return this.nodes[this.currentNode].question;
   }
 
   walk(affirmative) {
@@ -99,17 +98,17 @@ class Tree {
       this.currentNode = this.nodes[this.currentNode].noIndex;
     }
     return {
-      message: this.getCurrentNodeMessage(),
+      question: this.getCurrentNodequestion(),
       complete: !this.nodes[this.currentNode].yesIndex,
     };
   }
 }
 
 const treeData = {
-  message: "Do you want vocals with your synthwave?",
+  question: "Do you want vocals with your synthwave?",
   yes: {
     answer: "Sure, why not?",
-    message: "New or classic?",
+    question: "New or classic?",
     yes: {
       answer: "I'll stick with the classics",
       result: "Vaporwave"
@@ -121,10 +120,10 @@ const treeData = {
   },
   no: {
     answer: "Let's just let the keyboard do the talking",
-    message: "Feeling despondent?",
+    question: "Feeling despondent?",
     yes: {
       answer: "I've been known to brood...",
-      message: "Dark or Cyber?",
+      question: "Dark or Cyber?",
       yes: {
         answer: "Let's go dark",
         result: "Darksynth"
@@ -136,14 +135,14 @@ const treeData = {
     },
     no: {
       answer: "I'm a ray of sunshine",
-      message: "To the stars?",
+      question: "To the stars?",
       yes: {
         answer: "Get me off this rock",
         result: "Spacewave"
       },
       no: {
         answer: "I'd prefer to stay local",
-        message: "Driving fast?",
+        question: "Driving fast?",
         yes: {
           answer: "I'm fast af boi",
           result: "Outrun"
@@ -157,17 +156,103 @@ const treeData = {
   },
 };
 
+const otherTreeData = {
+  question: 'Do you like working with people?',
+  yes: {
+    question: 'Do you like caring for others?',
+    yes: {
+      question: 'Can you stand the sight of blood?',
+      yes: { question: 'Doctor' },
+      no: { question: 'Teacher' },
+    },
+    no: {
+      question: 'Is money very important to you?',
+      yes: { question: 'Sales person' },
+      no: { question: 'Artist' },
+    },
+  },
+  no: {
+    question: 'Would you like to work during the day?',
+    yes: {
+      question: 'Do you want to work with animals?',
+      yes: { question: 'Zookeeper' },
+      no: { question: 'Software engineer' },
+    },
+    no: {
+      question: 'Are you active?',
+      yes: { question: 'Security Guard' },
+      no: { question: 'Lighthouse keeper' },
+    },
+  },
+};
+
 const tree = new Tree(treeData);
+console.log(tree);
 
-// show first question
-document.getElementById("question-header").innerHTML = tree.nodes[tree.getCurrentNode()].message;
+class Node {
+  constructor({ value, left, right, msg }) {
+    this.value = value;
+    this.left = left || null;
+    this.right = right || null;
+    this.msg = msg
+  }
+}
 
-// assign yes answer to yes button
-document.getElementById("yes-selection").innerHTML =
-  console.log(tree.nodes);
-// assign no answer to no button
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
 
-console.log(tree.walk(false));
-console.log(tree.walk(true));
-console.log(tree.walk(false));
+  insert({ value, left, right, msg }) {
+    var newNode = new Node({ value, left, right, msg });
+    if (this.root === null) {
+      this.root = newNode;
+      return this;
+    }
 
+    let current = this.root;
+    while (current) {
+      if (value === current.value) {
+        return undefined;
+      }
+      if (value < current.value) {
+        if (current.left === null) {
+          current.left = newNode;
+          return this;
+        }
+        current = current.left;
+      } else {
+        if (current.right === null) {
+          current.right = newNode;
+          return this;
+        }
+        current = current.right;
+      }
+    }
+  }
+
+  find(value) {
+    if (!this.root) {
+      return false;
+    }
+    let current = this.root;
+    let found = false;
+    while (current && !found) {
+      if (value < current.value) {
+        current = current.left;
+      } else if (value > current.right) {
+        current = current.right;
+      } else {
+        found = current;
+      }
+    }
+    if (!found) {
+      return undefined;
+    }
+    return found;
+  }
+}
+
+const otherTree = new BinarySearchTree();
+otherTree.insert({ value: 1, left: 3, right: 4, msg: "test" });
+console.log(otherTree);

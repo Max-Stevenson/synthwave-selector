@@ -228,8 +228,14 @@ class BinarySearchTree {
 }
 
 class Node {
-  constructor({left, right, question, answer, result }, nodeValue) {
-    
+  constructor({ left, right, question, answer, result, value, leftValue, rightValue }) {
+    this.value = value;
+    if (leftValue) {
+      this.leftValue = leftValue;
+    }
+    if (rightValue) {
+      this.rightValue = rightValue;
+    }
     if (left) {
       this.left = new Node(left);
     }
@@ -246,12 +252,43 @@ class Node {
       this.result = result;
     }
   }
+
 }
 
 const basicData = {
   question: "vocals?",
-  left: { answer: "Sure", question: "new or old?", left: { answer: "new", result: "Newsynth" }, right: { answer: "old", result: "Vaporwave" } },
-  right: { answer: "Nope", question: "despondent?", left: { answer: "very", result: "Dark" }, right: { answer: "Not Really", result: "Chillwave" } },
+  left: {
+    value: 1,
+    leftValue: 3,
+    rightValue: 4,
+    answer: "Sure",
+    question: "new or old?",
+    left: {
+      value: 3,
+      answer: "new",
+      result: "Newsynth"
+    },
+    right: {
+      value: 4,
+      answer: "old",
+      result: "Vaporwave"
+    }
+  },
+  right: {
+    answer: "Nope",
+    question: "despondent?",
+    left: {
+      answer: "very",
+      result: "Dark"
+    },
+    right: {
+      answer: "Not Really",
+      result: "Chillwave"
+    }
+  },
+  value: 0,
+  leftValue: 1,
+  rightValue: 2
 }
 
 class BasicSearchTree {
@@ -268,13 +305,32 @@ class BasicSearchTree {
       console.log(this.root);
       return this;
     }
-    
+
   }
 }
 
 var t = new BasicSearchTree();
-t.addRecursive(basicData)
+t.addRecursive(basicData);
+
+document.getElementById("question-header").innerHTML = t.root.question;
+var leftButton = document.getElementById("left-selection");
+leftButton.innerHTML = t.root.left.answer;
+leftButton.setAttribute("value", t.root.leftValue);
+leftButton.setAttribute("childValue", t.root.left.leftValue);
+var rightButton = document.getElementById("right-selection");
+rightButton.innerHTML = t.root.right.answer;
+
 
 const isLeafNode = (node) => {
   return node.answer !== undefined;
 }
+
+
+
+const basicClickHandler = () => {
+  document.getElementById("left-selection").addEventListener("click", () => {
+
+  });
+}
+
+basicClickHandler();

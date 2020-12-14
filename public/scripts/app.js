@@ -35,10 +35,10 @@ class Tree {
     this.nodes = [];
     this.currentNode = 0;
 
-    const add = ({ question: question, yes, no, answer, result }) => {
+    const add = ({ question, yes, no, answer, result }) => {
       const currentIndex = this.nodes.length;
       if (question) {
-        this.nodes.push({ question: question });
+        this.nodes.push({ question });
       } else if (result) {
         this.nodes.push({ result });
       }
@@ -56,25 +56,6 @@ class Tree {
       }
       return currentIndex;
     };
-
-    // const add = ({ question, yes, no, answer }) => {
-    //   let currentIndex = this.nodes.length;
-    //   if (question) {
-    //     this.nodes.push({ question })
-    //   }
-
-    //   if (yes) {
-    //     add(yes);
-    //   }
-
-    //   if (answer) {
-    //     this.nodes.push(answer)
-    //   }
-
-    //   if (no) {
-    //     add(no)
-    //   }
-    // }
 
     add(treeObj);
   }
@@ -187,16 +168,9 @@ const otherTreeData = {
 };
 
 const tree = new Tree(treeData);
-console.log(tree);
 
-class Node {
-  constructor({ value, left, right, msg }) {
-    this.value = value;
-    this.left = left || null;
-    this.right = right || null;
-    this.msg = msg
-  }
-}
+
+
 
 class BinarySearchTree {
   constructor() {
@@ -253,6 +227,54 @@ class BinarySearchTree {
   }
 }
 
-const otherTree = new BinarySearchTree();
-otherTree.insert({ value: 1, left: 3, right: 4, msg: "test" });
-console.log(otherTree);
+class Node {
+  constructor({left, right, question, answer, result }, nodeValue) {
+    
+    if (left) {
+      this.left = new Node(left);
+    }
+    if (right) {
+      this.right = new Node(right);
+    }
+    if (question) {
+      this.question = question;
+    }
+    if (answer) {
+      this.answer = answer;
+    }
+    if (result) {
+      this.result = result;
+    }
+  }
+}
+
+const basicData = {
+  question: "vocals?",
+  left: { answer: "Sure", question: "new or old?", left: { answer: "new", result: "Newsynth" }, right: { answer: "old", result: "Vaporwave" } },
+  right: { answer: "Nope", question: "despondent?", left: { answer: "very", result: "Dark" }, right: { answer: "Not Really", result: "Chillwave" } },
+}
+
+class BasicSearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+  addRecursive(treeData) {
+    console.log(treeData);
+    let nodeValue = 0;
+    let newNode = new Node(treeData, nodeValue)
+    if (this.root === null) {
+      this.root = newNode;
+      console.log(this.root);
+      return this;
+    }
+    
+  }
+}
+
+var t = new BasicSearchTree();
+t.addRecursive(basicData)
+
+const isLeafNode = (node) => {
+  return node.answer !== undefined;
+}

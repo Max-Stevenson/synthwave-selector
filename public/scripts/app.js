@@ -29,3 +29,18 @@ const progressLoadingBar = () => {
 };
 
 progressLoadingBar();
+
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.parentNode = null;
+    this.children = [];
+  }
+}
+
+class Tree {
+  constructor(data) {
+    let rootNode = new Node(data);
+    this.root = rootNode;
+  }
+}

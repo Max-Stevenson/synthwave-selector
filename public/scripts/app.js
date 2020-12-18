@@ -43,4 +43,37 @@ class Tree {
     let rootNode = new Node(data);
     this.root = rootNode;
   }
+
+  traverseDepthFirst(callback) {
+    (function recurse(currentNode) {
+      for (let i = 0, length = currentNode.children.length; i < length; i++) {
+        recurse(currentNode.children[i]);
+      }
+      callback(currentNode);
+    })(this.root);
+  }
 }
+
+var tree = new Tree('one');
+ 
+tree.root.children.push(new Node('two'));
+tree.root.children[0].parent = tree;
+ 
+tree.root.children.push(new Node('three'));
+tree.root.children[1].parent = tree;
+ 
+tree.root.children.push(new Node('four'));
+tree.root.children[2].parent = tree;
+ 
+tree.root.children[0].children.push(new Node('five'));
+tree.root.children[0].children[0].parent = tree.root.children[0];
+ 
+tree.root.children[0].children.push(new Node('six'));
+tree.root.children[0].children[1].parent = tree.root.children[0];
+ 
+tree.root.children[2].children.push(new Node('seven'));
+tree.root.children[2].children[0].parent = tree.root.children[2];
+
+tree.traverseDepthFirst(function(node) {
+  console.log(node.data);
+})

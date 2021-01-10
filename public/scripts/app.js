@@ -30,6 +30,40 @@ const progressLoadingBar = () => {
 
 progressLoadingBar();
 
+class Queue {
+  constructor() {
+    this._oldestIndex = 1;
+    this._newestIndex = 1;
+    this._storage = {};
+  }
+
+  size() {
+    return this._newestIndex - this._oldestIndex;
+  }
+
+  enqueue(data) {
+    this._storage[this._newestIndex] = data;
+    this._newestIndex++;
+  }
+  
+  dequeue() {
+    var oldestIndex = this._oldestIndex,
+      newestIndex = this._newestIndex,
+      deletedData;
+
+    if (oldestIndex !== newestIndex) {
+      deletedData = this._storage[oldestIndex];
+      delete this._storage[oldestIndex];
+      this._oldestIndex++;
+
+      return deletedData;
+    }
+  }
+}
+
+
+
+
 class Node {
   constructor(data) {
     this.data = data;
@@ -52,28 +86,49 @@ class Tree {
       callback(currentNode);
     })(this.root);
   }
+
+  traverseBredthFirst(callback) {
+    let queue = new Queue();
+    queue.enqueue(this.root);
+
+    let currentTree = queue.dequeue();
+
+    while (currentTree) {
+      for (let i = 0, j = currentTree.children.length; i < j; i++) {
+        queue.enqueue(currentTree.children[i]);
+      }
+
+      callback(currentTree);
+      currentTree = queue.dequeue();
+    }
+  }
 }
 
 var tree = new Tree('one');
- 
+
 tree.root.children.push(new Node('two'));
 tree.root.children[0].parent = tree;
- 
+
 tree.root.children.push(new Node('three'));
 tree.root.children[1].parent = tree;
- 
+
 tree.root.children.push(new Node('four'));
 tree.root.children[2].parent = tree;
- 
+
 tree.root.children[0].children.push(new Node('five'));
 tree.root.children[0].children[0].parent = tree.root.children[0];
- 
+
 tree.root.children[0].children.push(new Node('six'));
 tree.root.children[0].children[1].parent = tree.root.children[0];
- 
+
 tree.root.children[2].children.push(new Node('seven'));
 tree.root.children[2].children[0].parent = tree.root.children[2];
 
-tree.traverseDepthFirst(function(node) {
+
+tree.traverseDepthFirst(function (node) {
+  console.log(node.data);
+});
+
+tree.traverseBredthFirst(function (node) {
   console.log(node.data);
 })

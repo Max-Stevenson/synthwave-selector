@@ -45,7 +45,7 @@ class Queue {
     this._storage[this._newestIndex] = data;
     this._newestIndex++;
   }
-  
+
   dequeue() {
     var oldestIndex = this._oldestIndex,
       newestIndex = this._newestIndex,
@@ -60,9 +60,6 @@ class Queue {
     }
   }
 }
-
-
-
 
 class Node {
   constructor(data) {
@@ -85,7 +82,7 @@ class Tree {
       }
       callback(currentNode);
     })(this.root);
-  }
+  };
 
   traverseBredthFirst(callback) {
     let queue = new Queue();
@@ -101,33 +98,35 @@ class Tree {
       callback(currentTree);
       currentTree = queue.dequeue();
     }
-  }
+  };
+
+  contains(callback, traversal) {
+    traversal.call(this, callback);
+  };
+
+  add(data, toData, traversal) {
+    let child = new Node(data);
+    let parent = null;
+    let callback = function (node) {
+      if (node.data.question === toData) {
+        parent = node;
+      }
+    }
+
+    this.contains(callback, traversal);
+
+    if (parent) {
+      parent.children.push(child);
+      child.parent = parent;
+    } else {
+      throw new Error('Cannot add node to a non-existent parent.');
+    }
+  };
 }
 
-var tree = new Tree('one');
-
-tree.root.children.push(new Node('two'));
-tree.root.children[0].parent = tree;
-
-tree.root.children.push(new Node('three'));
-tree.root.children[1].parent = tree;
-
-tree.root.children.push(new Node('four'));
-tree.root.children[2].parent = tree;
-
-tree.root.children[0].children.push(new Node('five'));
-tree.root.children[0].children[0].parent = tree.root.children[0];
-
-tree.root.children[0].children.push(new Node('six'));
-tree.root.children[0].children[1].parent = tree.root.children[0];
-
-tree.root.children[2].children.push(new Node('seven'));
-tree.root.children[2].children[0].parent = tree.root.children[2];
-
-
-tree.traverseDepthFirst(function (node) {
-  console.log(node.data);
-});
+var tree = new Tree({question: "vocals"});
+tree.add("yes", "vocals", tree.traverseBredthFirst);
+tree.add("no", "vocals", tree.traverseBredthFirst);
 
 tree.traverseBredthFirst(function (node) {
   console.log(node.data);

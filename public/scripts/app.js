@@ -108,7 +108,7 @@ class Tree {
     let child = new Node(data);
     let parent = null;
     let callback = function (node) {
-      if (node.data.question === toData) {
+      if (node.data.parentQuestion === toData) {
         parent = node;
       }
     }
@@ -124,10 +124,22 @@ class Tree {
   };
 }
 
-var tree = new Tree({question: "vocals"});
-tree.add("yes", "vocals", tree.traverseBredthFirst);
-tree.add("no", "vocals", tree.traverseBredthFirst);
+const tree = new Tree({ parentQuestion: "vocals" });
+tree.add({childQuestion: "new or old", answer: "yes"}, "vocals", tree.traverseBredthFirst);
+tree.add({childQuestion: "Dark or upbeat", answer: "no"}, "vocals", tree.traverseBredthFirst);
+
 
 tree.traverseBredthFirst(function (node) {
   console.log(node.data);
-})
+});
+console.log(tree);
+
+const test = {
+  parentQuestion: "",
+  childQuestion: "",
+  answer: ""
+}
+
+document.querySelector("#question-header").innerHTML = tree.root.data.parentQuestion;
+document.querySelector("#left-selection").innerHTML = tree.root.children[0].data.answer;
+document.querySelector("#right-selection").innerHTML = tree.root.children[1].data.answer

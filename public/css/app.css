@@ -17,6 +17,10 @@ ul li a{
   display: none;
 }
 
+button {
+  font-size: 28px;
+}
+
 .main__container {
   display: flex;
   flex-direction: column;

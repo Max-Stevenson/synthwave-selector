@@ -110,6 +110,8 @@ class Tree {
     let callback = function (node) {
       if (node.data.parentQuestion === toData) {
         parent = node;
+      } else if (node.data.childQuestion === toData) {
+        parent = node
       }
     }
 
@@ -125,8 +127,10 @@ class Tree {
 }
 
 const tree = new Tree({ parentQuestion: "vocals" });
-tree.add({childQuestion: "new or old", answer: "yes"}, "vocals", tree.traverseBredthFirst);
-tree.add({childQuestion: "Dark or upbeat", answer: "no"}, "vocals", tree.traverseBredthFirst);
+tree.add({parentQuestion: "vocals", childQuestion: "new or old", answer: "yes"}, "vocals", tree.traverseDepthFirst);
+tree.add({parentQuestion: "vocals", childQuestion: "Dark or upbeat", answer: "no"}, "vocals", tree.traverseDepthFirst);
+tree.add({parentQuestion: "new or old", childQuestion: null, answer: "yes", result: "new result"}, "new or old", tree.traverseDepthFirst);
+tree.add({parentQuestion: "new or old", childQuestion: null, answer: "no", result: "old result"}, "new or old", tree.traverseDepthFirst);
 
 
 tree.traverseBredthFirst(function (node) {
@@ -142,4 +146,17 @@ const test = {
 
 document.querySelector("#question-header").innerHTML = tree.root.data.parentQuestion;
 document.querySelector("#left-selection").innerHTML = tree.root.children[0].data.answer;
+document.querySelector("#left-selection").setAttribute("data-next-question", tree.root.children[0].data.childQuestion);
 document.querySelector("#right-selection").innerHTML = tree.root.children[1].data.answer
+
+document.querySelector("#left-selection").addEventListener("click", () => {
+  let childQuestion = event.target.getAttribute("data-next-question");
+  let foundNode;
+  let callback = (node) => {
+    if (node.data.parentQuestion === childQuestion){
+      foundNode = node;
+    }
+  }
+  tree.contains(callback, tree.traverseDepthFirst);
+  console.log(foundNode);
+})
